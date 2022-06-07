@@ -15,7 +15,8 @@ Version:        24.0
 Release:        0%{?dist}
 License:        ASL 2.0 or BSD-3-clause
 Group:          Applications/System
-Source0:        https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v%{version}.tar.gz
+#Source0:        https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v%{version}.tar.gz
+Source0:        https://github.com/cloud-hypervisor/cloud-hypervisor/archive/cloud-hypervisor-v%{version}.tar.xz
 %if 0%{?using_vendored_crates}
 Source1:        vendor.tar.gz
 Source2:        config.toml
@@ -64,6 +65,7 @@ Cloud Hypervisor is an open source Virtual Machine Monitor (VMM) that runs on to
 
 %setup -q
 %if 0%{?using_vendored_crates}
+rm -rf .cargo vendor
 tar xf %{SOURCE1}
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/
