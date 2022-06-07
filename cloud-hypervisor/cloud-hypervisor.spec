@@ -1,9 +1,9 @@
 # If this flag is set to 1, rustup installation needs to exist on the system and
 # <arch>-unknown-linux-gnu target is required.
 # If this flag is set to 0, distro specific Rust packages will be pulled into the build environment.
-%define using_rustup 1
+%define using_rustup 0
 # If this flag is set to 1, <arch>-unknown-linux-musl target is required.
-%define using_musl_libc 1
+%define using_musl_libc 0
 # If this flag is set to 1, the vendored crates archive and cargo.toml need to be prepared and
 # offline build is implied. Attached script update_src can be used for the vendorization.
 # If this flag is set to 0, access to the internet is required during the build.
