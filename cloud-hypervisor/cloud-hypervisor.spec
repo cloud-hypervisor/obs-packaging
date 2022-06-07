@@ -150,7 +150,7 @@ rm -rf %{buildroot}
 *   Wed May 25 2022 Sebastien Boeuf <sebastien.boeuf@intel.com> 24.0-0
 -   Update to 24.0
 
-*   Tue May 18 2022 Anatol Belski <anbelski@linux.microsoft.com> - 23.1-0
+*   Wed May 18 2022 Anatol Belski <anbelski@linux.microsoft.com> - 23.1-0
 -   Update to 23.1
 -   Add support for aarch64 build
 -   Add offline build configuration using vendored crates
