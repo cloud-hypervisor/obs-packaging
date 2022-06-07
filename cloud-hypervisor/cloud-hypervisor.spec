@@ -54,7 +54,7 @@ Requires: libcap
 %if 0%{?using_vendored_crates}
 %define cargo_offline --offline
 %else
-%define cargo_offline
+%define cargo_offline %{nil}
 %endif
 
 %description
