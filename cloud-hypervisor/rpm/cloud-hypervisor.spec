@@ -151,6 +151,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_bindir}/ch-remote
 %caps(cap_net_admin=ep) %{_bindir}/cloud-hypervisor
+%dir %{_libdir}/cloud-hypervisor
 %{_libdir}/cloud-hypervisor/vhost_user_block
 %caps(cap_net_admin=ep) %{_libdir}/cloud-hypervisor/vhost_user_net
 %if 0%{?using_musl_libc}
