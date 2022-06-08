@@ -13,6 +13,8 @@
 
 %define ch_ver 24.0
 
+%define using_obs 1
+
 Name:           cloud-hypervisor
 Summary:        Cloud Hypervisor is an open source Virtual Machine Monitor (VMM) that runs on top of KVM.
 %if 0%{?using_vendored_tarball}
@@ -41,8 +43,12 @@ BuildRequires:  git
 BuildRequires:  openssl-devel
 
 %if ! 0%{?using_rustup}
+%if 0%{?using_obs}
+BuildRequires:  rust-binary
+%else
 BuildRequires:  rust
 BuildRequires:  cargo
+%endif
 %endif
 
 Requires: bash
