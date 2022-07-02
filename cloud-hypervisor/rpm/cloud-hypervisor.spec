@@ -18,10 +18,8 @@ BuildRequires:  binutils
 BuildRequires:  git
 BuildRequires:  openssl-devel
 
-%if ! 0%{?using_rustup}
 BuildRequires:  rust
 BuildRequires:  cargo
-%endif
 
 Requires: bash
 Requires: glibc
@@ -78,28 +76,6 @@ if [[ $? -ne 0 ]]; then
 	echo "Cargo not found, please install cargo. exiting"
 	exit 0
 fi
-
-%if 0%{?using_rustup}
-which rustup
-if [[ $? -ne 0 ]]; then
-	echo "Rustup not found please install rustup #curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
-fi
-%endif
-
-echo ${cargo_version}
-
-%if 0%{?using_rustup}
-rustup target list --installed | grep -e "%{rust_def_target}"
-if [[ $? -ne 0 ]]; then
-         echo "Target  %{rust_def_target} not found, please install(#rustup target add %{rust_def_target}). exiting"
-fi
-	%if 0%{?using_musl_libc}
-rustup target list --installed | grep -e "%{rust_musl_target}"
-if [[ $? -ne 0 ]]; then
-         echo "Target  %{rust_musl_target} not found, please install(#rustup target add %{rust_musl_target}). exiting"
-fi
-	%endif
-%endif
 
 export OPENSSL_NO_VENDOR=1
 cargo build --release --target=%{rust_def_target} --all %{cargo_offline}
