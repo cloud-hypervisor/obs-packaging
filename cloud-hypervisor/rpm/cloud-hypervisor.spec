@@ -1,39 +1,15 @@
-# If this flag is set to 1, rustup installation needs to exist on the system and
-# <arch>-unknown-linux-gnu target is required.
-# If this flag is set to 0, distro specific Rust packages will be pulled into the build environment.
-%define using_rustup 0
 # If this flag is set to 1, <arch>-unknown-linux-musl target is required.
 %define using_musl_libc 0
-# If this flag is set to 1, the vendored crates archive and cargo.toml need to be prepared and
-# offline build is implied. Attached script update_src can be used for the vendorization.
-# If this flag is set to 0, access to the internet is required during the build.
-%define using_vendored_crates 0
-# If this flag is set to 1, the released tarball with the bundled vendored crates will be used.
-%define using_vendored_tarball 1
-
-%define ch_ver 24.0
-
-%define using_obs 1
 
 Name:           cloud-hypervisor
 Summary:        Cloud Hypervisor is an open source Virtual Machine Monitor (VMM) that runs on top of KVM.
-%if 0%{?using_vendored_tarball}
-Version:        v%{ch_ver}
-%else
-Version:        %{ch_ver}
-%endif
+Version:        24.0
 Release:        0%{?dist}
 License:        ASL 2.0 or BSD-3-clause
 Group:          Applications/System
-%if 0%{?using_vendored_tarball}
-Source0:        https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/%{version}/cloud-hypervisor-%{version}.tar.xz
-%else
 Source0:        https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v%{version}.tar.gz
-%endif
-%if 0%{?using_vendored_crates}
 Source1:        vendor.tar.gz
 Source2:        config.toml
-%endif
 ExclusiveArch:  x86_64 aarch64
 
 BuildRequires:  gcc
@@ -43,12 +19,8 @@ BuildRequires:  git
 BuildRequires:  openssl-devel
 
 %if ! 0%{?using_rustup}
-%if 0%{?using_obs}
-BuildRequires:  rust-binary
-%else
 BuildRequires:  rust
 BuildRequires:  cargo
-%endif
 %endif
 
 Requires: bash
@@ -69,15 +41,7 @@ Requires: libcap
 %endif
 %endif
 
-%if 0%{?using_vendored_crates}
 %define cargo_offline --offline
-%else
-%if 0%{?using_vendored_tarball}
-%define cargo_offline --offline
-%else
-%define cargo_offline %{nil}
-%endif
-%endif
 
 %description
 Cloud Hypervisor is an open source Virtual Machine Monitor (VMM) that runs on top of KVM. The project focuses on exclusively running modern, cloud workloads, on top of a limited set of hardware architectures and platforms. Cloud workloads refers to those that are usually run by customers inside a cloud provider. For our purposes this means modern Linux* distributions with most I/O handled by paravirtualised devices (i.e. virtio), no requirement for legacy devices and recent CPUs and KVM.
@@ -85,12 +49,9 @@ Cloud Hypervisor is an open source Virtual Machine Monitor (VMM) that runs on to
 %prep
 
 %setup -q
-%if 0%{?using_vendored_crates}
-rm -rf .cargo vendor
 tar xf %{SOURCE1}
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/
-%endif
 
 %install
 rm -rf %{buildroot}
@@ -140,10 +101,7 @@ fi
 	%endif
 %endif
 
-%if 0%{?using_vendored_crates}
-# For vendored build, prepend this so openssl-sys doesn't trigger full OpenSSL build
 export OPENSSL_NO_VENDOR=1
-%endif
 cargo build --release --target=%{rust_def_target} --all %{cargo_offline}
 %if 0%{?using_musl_libc}
 cargo build --release --target=%{rust_musl_target} --all %{cargo_offline}
