@@ -83,10 +83,6 @@ cargo build --release --target=%{rust_def_target} --all %{cargo_offline}
 cargo build --release --target=%{rust_musl_target} --all %{cargo_offline}
 %endif
 
-
-%clean
-rm -rf %{buildroot}
-
 %files
 %defattr(-,root,root,-)
 %{_bindir}/ch-remote
