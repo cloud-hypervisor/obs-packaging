@@ -2,7 +2,7 @@
 %define using_musl_libc 0
 
 Name:           cloud-hypervisor
-Summary:        Cloud Hypervisor is an open source Virtual Machine Monitor (VMM) that runs on top of KVM.
+Summary:        Cloud Hypervisor is a Virtual Machine Monitor (VMM) that runs on top of KVM
 Version:        24.0
 Release:        1%{?dist}
 License:        ASL 2.0 or BSD-3-clause
