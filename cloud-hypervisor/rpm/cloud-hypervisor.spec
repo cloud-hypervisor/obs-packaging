@@ -4,7 +4,7 @@
 Name:           cloud-hypervisor
 Summary:        Cloud Hypervisor is a Virtual Machine Monitor (VMM) that runs on top of KVM
 Version:        24.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        ASL 2.0 or BSD-3-clause
 Group:          Applications/System
 Source0:        https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v%{version}.tar.gz
@@ -101,6 +101,10 @@ cargo build --release --target=%{rust_musl_target} --all %{cargo_offline}
 
 
 %changelog
+*   Sun Jul 03 2022 Anatol Belski <anbelski@linux.microsoft.com> 24.0-2
+-   Rework and simplify specs
+-   Set version condition for Rust toolchain
+
 *   Wed May 25 2022 Sebastien Boeuf <sebastien.boeuf@intel.com> 24.0-0
 -   Update to 24.0
 
