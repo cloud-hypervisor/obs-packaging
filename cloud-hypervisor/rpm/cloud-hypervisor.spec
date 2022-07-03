@@ -18,8 +18,8 @@ BuildRequires:  binutils
 BuildRequires:  git
 BuildRequires:  openssl-devel
 
-BuildRequires:  rust
-BuildRequires:  cargo
+BuildRequires:  rust >= 1.60.0
+BuildRequires:  cargo >= 1.60.0
 
 Requires: bash
 Requires: glibc
