@@ -23,14 +23,16 @@ ExclusiveArch:  aarch64 x86_64
 
 %if 0%{?suse_version}
 BuildRequires:  acpica
+Buildrequires:  python
+Buildrequires:  python3
 %else
 BuildRequires:  acpica-tools
+Buildrequires:  python3-devel
 %endif
-BuildRequires:  gcc gcc-c++ make
+BuildRequires:  binutils gcc gcc-c++ make
 %ifarch x86_64
 BuildRequires:  nasm 
 %endif
-Buildrequires:  python3-setuptools
 BuildRequires:  libuuid-devel
 %ifarch aarch64
 BuildRequires:  sed
