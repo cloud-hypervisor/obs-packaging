@@ -26,7 +26,7 @@ BuildRequires:  acpica
 %else
 BuildRequires:  acpica-tools
 %endif
-BuildRequires:  gcc
+BuildRequires:  gcc gcc-c++ make
 %ifarch x86_64
 BuildRequires:  nasm 
 %endif
