@@ -1,0 +1,47 @@
+#!/bin/bash
+
+#set -x 
+
+EDK2_VER=$1
+EDK2_SPEC_DIR=$(pwd)
+EDK2_TMP_DIR=$EDK2_SPEC_DIR/edk2_tmp
+EDK2_SRC_DIR=$EDK2_SPEC_DIR/src
+EDK2_ARC_FMT=tar.gz
+EDK2_BRANCH=ch
+
+if [ -z $EDK2_VER ]; then
+	echo "Replace sources with the given <tag>"
+	echo "Usage: $0 <tag> or <hash>"
+	exit 3
+fi
+
+rm -rf $EDK2_TMP_DIR
+rm $EDK2_SRC_DIR/edk2-*-$EDK2_BRANCH.tar.gz $EDK2_SRC_DIR/edk2-submodule*.tar.gz
+
+# NOTE Not touching edk2-platforms here, it's a separate repo that might want to be frozen
+#git clone https://github.com/tianocore/edk2.git $EDK2_TMP_DIR
+git clone --branch $EDK2_BRANCH https://github.com/cloud-hypervisor/edk2.git $EDK2_TMP_DIR
+
+pushd $EDK2_TMP_DIR
+git reset --hard $EDK2_VER
+
+OUT_BN=$EDK2_VER
+if [ "${OUT_BN:0:5}" != "edk2-" ]; then
+	OUT_BN="edk2-$OUT_BN"
+fi
+OUT_BN="$OUT_BN-$EDK2_BRANCH"
+EDK2_TARBALL_BN=$OUT_BN.$EDK2_ARC_FMT
+git archive --format $EDK2_ARC_FMT --output $EDK2_SRC_DIR/$EDK2_TARBALL_BN $EDK2_VER
+
+git submodule update --force --init --recursive
+git submodule foreach '
+    set -e -u -C
+    archive=edk2-submodule-$(echo -n "$name" | tr "/" "-")
+    rm -f -- "$toplevel/$archive.tar.gz"
+    git archive --format '$EDK2_ARC_FMT' --prefix "$sm_path/" --output "'$EDK2_SRC_DIR'/$archive.'$EDK2_ARC_FMT'" $sha1
+'
+
+popd
+
+rm -rf $EDK2_TMP_DIR
+
