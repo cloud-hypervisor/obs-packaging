@@ -19,6 +19,7 @@ Source6:        edk2-submodule-RedfishPkg-Library-JsonLib-jansson.tar.gz
 Source7:        edk2-submodule-SoftFloat.tar.gz
 Source8:        edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz
 ExclusiveArch:  aarch64 x86_64
+#!BuildIgnore:  gcc-PIE
 
 %if 0%{?suse_version}
 BuildRequires:  acpica
