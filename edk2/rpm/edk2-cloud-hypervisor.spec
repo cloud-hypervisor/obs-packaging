@@ -88,9 +88,9 @@ build -a %{edk2_arch} -t GCC5 -p %{edk2_dsc} -b RELEASE
 %check
 
 %install
+%defattr(-,root,root)
 D=%{buildroot}%{_datadir}/cloud-hypervisor
-mkdir -p $D
-install -m 644 %{edk2_fd_path} $D/CLOUDHV_EFI.fd
+install -D -m 644 %{edk2_fd_path} $D/CLOUDHV_EFI.fd
 
 %files
 %{_datadir}/cloud-hypervisor/*
