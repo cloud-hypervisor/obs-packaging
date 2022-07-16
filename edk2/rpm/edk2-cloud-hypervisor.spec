@@ -96,6 +96,7 @@ install -D -m 644 %{edk2_fd_path} $D/CLOUDHV_EFI.fd
 %{_datadir}/cloud-hypervisor/*
 %license edk2/License-History.txt
 %license edk2/License.txt
+%dir %{_datadir}/cloud-hypervisor
 
 %changelog
 * Sat Jul 16 2022 Anatol Belski <anbelski@linux.microsoft.com> - 20220715-1
