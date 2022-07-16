@@ -31,11 +31,7 @@ BuildRequires:  gcc gcc-c++ make
 BuildRequires:  nasm 
 %endif
 Buildrequires:  python3-setuptools
-%if 0%{?fedora}
 BuildRequires:  libuuid-devel
-%else
-BuildRequires:  uuid-devel
-%endif
 %ifarch aarch64
 BuildRequires:  sed
 %endif
