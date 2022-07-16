@@ -20,7 +20,7 @@ Source7:        edk2-submodule-SoftFloat.tar.gz
 Source8:        edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz
 ExclusiveArch:  aarch64 x86_64
 
-%if 0%{?suse_version} > 0
+%if 0%{?suse_version}
 BuildRequires:  acpica
 %else
 BuildRequires:  acpica-tools
@@ -30,7 +30,11 @@ BuildRequires:  gcc
 BuildRequires:  nasm 
 %endif
 Buildrequires:  python3-setuptools
+%if 0%{?fedora}
+BuildRequires:  libuuid-devel
+%else
 BuildRequires:  uuid-devel
+%endif
 %ifarch aarch64
 BuildRequires:  sed
 %endif
