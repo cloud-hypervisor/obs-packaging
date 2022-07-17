@@ -23,11 +23,12 @@ BuildRequires:  cargo >= 1.60.0
 
 Requires: bash
 Requires: glibc
-Requires: libgcc
 %if 0%{?suse_version}
+Requires: libgcc_s1
 Requires: libcap2
 %else
 Requires: libcap
+Requires: libgcc
 %endif
  
 %ifarch x86_64
