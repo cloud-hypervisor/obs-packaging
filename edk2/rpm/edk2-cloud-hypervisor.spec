@@ -21,13 +21,11 @@ Source8:        edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar
 ExclusiveArch:  aarch64 x86_64
 #!BuildIgnore:  gcc-PIE
 
+Buildrequires:  python3
 %if 0%{?suse_version}
 BuildRequires:  acpica
-Buildrequires:  python
-Buildrequires:  python3
 %else
 BuildRequires:  acpica-tools
-Buildrequires:  python3-devel
 %endif
 BuildRequires:  binutils gcc gcc-c++ make
 %ifarch x86_64
