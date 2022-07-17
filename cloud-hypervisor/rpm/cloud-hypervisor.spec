@@ -12,7 +12,15 @@ Source1:        vendor.tar.gz
 Source2:        config.toml
 ExclusiveArch:  x86_64 aarch64
 
+%if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1599
+%global gcc_version 11
+%endif
+
+%if 0%{?gcc_version} != 0
+BuildRequires:  gcc%{gcc_version}
+%else
 BuildRequires:  gcc
+%endif
 BuildRequires:  glibc-devel
 BuildRequires:  binutils
 BuildRequires:  git
@@ -76,6 +84,11 @@ install -D -m755 target/%{rust_musl_target}/release/ch-remote %{buildroot}%{_lib
 
 
 %build
+%if 0%{?gcc_version} != 0
+export CC=gcc%{gcc_version}
+export RUSTFLAGS="-Clinker=gcc-%{gcc_version}"
+%endif
+
 cargo_version=$(cargo --version)
 if [[ $? -ne 0 ]]; then
 	echo "Cargo not found, please install cargo. exiting"
