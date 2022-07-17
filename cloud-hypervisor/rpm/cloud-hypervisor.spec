@@ -4,7 +4,7 @@
 Name:           cloud-hypervisor
 Summary:        Cloud Hypervisor is a Virtual Machine Monitor (VMM) that runs on top of KVM
 Version:        25.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        ASL 2.0 or BSD-3-clause
 Group:          Applications/System
 Source0:        https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v%{version}.tar.gz
@@ -24,7 +24,11 @@ BuildRequires:  cargo >= 1.60.0
 Requires: bash
 Requires: glibc
 Requires: libgcc
+%if 0%{?suse_version}
+Requires: libcap2
+%else
 Requires: libcap
+%endif
  
 %ifarch x86_64
 %define rust_def_target x86_64-unknown-linux-gnu
