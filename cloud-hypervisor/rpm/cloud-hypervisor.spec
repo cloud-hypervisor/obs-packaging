@@ -12,7 +12,7 @@ Source1:        vendor.tar.gz
 Source2:        config.toml
 ExclusiveArch:  x86_64 aarch64
 
-%if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1599
+%if 0%{?suse_version} && 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1599
 %global gcc_version 11
 %endif
 
