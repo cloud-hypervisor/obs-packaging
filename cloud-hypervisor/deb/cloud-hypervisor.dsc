@@ -1,6 +1,7 @@
 Format: 3.0 (quilt)
 Source: cloud-hypervisor
 Version: 25.0
+DEBTRANSFORM-RELEASE: 2
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Architecture: amd64 arm64
 Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libssl-dev, libcap2-bin
