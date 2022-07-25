@@ -3,7 +3,7 @@ Source: cloud-hypervisor
 Version: 25.0
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Architecture: amd64 arm64
-Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libssl-dev
+Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libssl-dev, libcap2-bin
 DEBTRANSFORM-TAR: v25.0.tar.gz
 Checksums-Sha1:
  c366b46ddfa31c703191d8ca332c5682763633ee 797815 v25.0.tar.gz

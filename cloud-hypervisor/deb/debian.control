@@ -1,7 +1,7 @@
 Source: cloud-hypervisor
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Homepage: https://www.cloudhypervisor.org/
-Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libssl-dev
+Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libssl-dev, libcap2-bin
 
 
 Package: cloud-hypervisor
