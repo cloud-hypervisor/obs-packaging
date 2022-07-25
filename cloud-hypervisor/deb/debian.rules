@@ -5,7 +5,6 @@ export DH_VERBOSE=1
 include /usr/share/dpkg/pkg-info.mk
 include /usr/share/dpkg/architecture.mk
 include /usr/share/dpkg/buildflags.mk
-include /usr/share/rustc/architecture.mk
 
 %:
 	dh $@
@@ -19,8 +18,37 @@ override_dh_auto_build-arch:
 	cargo build
 
 override_dh_auto_install:
-	DESTDIR=debian/cloud-hypervisor cargo install
+	install -d debian/cloud-hypervisor/usr
+	install -d debian/cloud-hypervisor/usr/bin
+	install -D -m755  ./target/$(RUST_DEF_TARGET)/release/cloud-hypervisor debian/cloud-hypervisor/usr/bin
+	install -D -m755  ./target/$(RUST_DEF_TARGET)/release/ch-remote debian/cloud-hypervisor/usr/bin
+	install -d debian/cloud-hypervisor/usr/lib
+	install -d debian/cloud-hypervisor/usr/lib/cloud-hypervisor
+	install -D -m755 target/$(RUST_DEF_TARGET)/release/vhost_user_block debian/cloud-hypervisor/usr/lib/cloud-hypervisor
+	install -D -m755 target/$(RUST_DEF_TARGET)/release/vhost_user_net debian/cloud-hypervisor/usr/lib/cloud-hypervisor
 
 override_dh_auto_clean:
 	cargo clean
+
+ifeq ($(DEB_BUILD_ARCH_CPU), amd64)
+    RUST_DEF_TARGET := x86_64-unknown-linux-gnu
+else ifeq ($(DEB_BUILD_ARCH_CPU), aarch64)
+    RUST_DEF_TARGET := aarch64-unknown-linux-gnu
+else ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
+    RUST_DEF_TARGET := aarch64-unknown-linux-gnu
+else
+    $(error unrecognized build host instruction set $(DEB_HOST_ARCH_CPU)!)
+endif
+
+ifeq ($(DEB_BUILD_ARCH_CPU), amd64)
+    RUST_ARCH := x86_64
+else ifeq ($(DEB_BUILD_ARCH_CPU), aarch64)
+    RUST_ARCH := aarch64
+else ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
+    RUST_ARCH := aarch64
+else
+    $(error unrecognized build host instruction set $(DEB_HOST_ARCH_CPU)!)
+endif
+
+RUST_DEF_TARGET := $(RUST_ARCH)-unknown-linux-gnu
 
