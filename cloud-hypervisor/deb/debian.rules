@@ -20,7 +20,7 @@ override_dh_auto_install:
 	install -d debian/cloud-hypervisor/usr
 	install -d debian/cloud-hypervisor/usr/bin
 	install -D -m755  ./target/$(RUST_DEF_TARGET)/release/cloud-hypervisor debian/cloud-hypervisor/usr/bin
-	setcap cap_net_admin+ep debian/cloud-hypervisor/usr/bin/cloud-hypervisor
+	/sbin/setcap cap_net_admin+ep debian/cloud-hypervisor/usr/bin/cloud-hypervisor
 	install -D -m755  ./target/$(RUST_DEF_TARGET)/release/ch-remote debian/cloud-hypervisor/usr/bin
 	install -d debian/cloud-hypervisor/usr/lib
 	install -d debian/cloud-hypervisor/usr/lib/cloud-hypervisor
