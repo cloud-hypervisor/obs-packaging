@@ -13,7 +13,7 @@ override_dh_auto_build-arch:
 	# /usr/src/packages/SOURCES is OBS specific path
 	tar xf /usr/src/packages/SOURCES/vendor.tar.gz
 	mkdir -p .cargo
-	cp /usr/src/packages/SOURCES/cargo.toml .cargo/
+	cp /usr/src/packages/SOURCES/config.toml .cargo/
 	cargo build
 
 override_dh_auto_install:
