@@ -4,7 +4,7 @@ Version: 25.0
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Architecture: amd64 arm64
 Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libssl-dev
-DEBTRANSFORM-TAR: v25.tar.gz
+DEBTRANSFORM-TAR: v25.0.tar.gz
 Checksums-Sha1:
  c366b46ddfa31c703191d8ca332c5682763633ee 797815 v25.0.tar.gz
  c579ff89a4e6291c595cc31243d1cff8871d1f07 1185 config.toml
