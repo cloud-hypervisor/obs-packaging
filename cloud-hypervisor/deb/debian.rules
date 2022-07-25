@@ -9,12 +9,10 @@ include /usr/share/dpkg/buildflags.mk
 %:
 	dh $@
 
-override_dh_prep:
+override_dh_auto_build-arch:
 	tar xf ../vendor.tar.gz
 	mkdir -p .cargo
 	cp ../cargo.toml .cargo/
-
-override_dh_auto_build-arch:
 	cargo build
 
 override_dh_auto_install:
