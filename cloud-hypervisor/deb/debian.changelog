@@ -1,0 +1,6 @@
+cloud-hypervisor (25.0-1) stable unstable bionic focal impish jammy kinetic; urgency=low
+
+  * Cloud Hypervisor 25.0
+
+-- Anatol Belski <anbelski@linux.microsoft.com>  Mon, 25 Jul 2022 18:24:45 +0200
+

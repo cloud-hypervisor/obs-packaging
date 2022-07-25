@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+include /usr/share/dpkg/pkg-info.mk
+include /usr/share/dpkg/architecture.mk
+include /usr/share/dpkg/buildflags.mk
+include /usr/share/rustc/architecture.mk
+
+%:
+	dh $@
+
+override_dh_prep:
+	tar xf ../vendor.tar.gz
+	mkdir -p .cargo
+	cp ../cargo.toml .cargo/
+
+override_dh_auto_build-arch:
+	cargo build
+
+override_dh_auto_install:
+	DESTDIR=debian/cloud-hypervisor cargo install
+
+override_dh_auto_clean:
+	cargo clean
+
