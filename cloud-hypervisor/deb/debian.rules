@@ -14,7 +14,7 @@ override_dh_auto_build-arch:
 	tar xf /usr/src/packages/SOURCES/vendor.tar.gz
 	mkdir -p .cargo
 	cp /usr/src/packages/SOURCES/config.toml .cargo/
-	cargo build
+	cargo build --release --target=$(RUST_DEF_TARGET) --all --offline
 
 override_dh_auto_install:
 	install -d debian/cloud-hypervisor/usr
