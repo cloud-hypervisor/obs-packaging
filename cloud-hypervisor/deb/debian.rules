@@ -10,9 +10,10 @@ include /usr/share/dpkg/buildflags.mk
 	dh $@
 
 override_dh_auto_build-arch:
-	tar xf ../vendor.tar.gz
+	# /usr/src/packages/SOURCES is OBS specific path
+	tar xf /usr/src/packages/SOURCES/vendor.tar.gz
 	mkdir -p .cargo
-	cp ../cargo.toml .cargo/
+	cp /usr/src/packages/SOURCES/cargo.toml .cargo/
 	cargo build
 
 override_dh_auto_install:
