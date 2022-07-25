@@ -6,7 +6,7 @@ Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libs
 
 Package: cloud-hypervisor
 Version: 25.0
-Architecture: x86_64 arm64
+Architecture: amd64 arm64
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Depends: bash, libgcc1, libcap2, libc
 Description: Cloud Hypervisor is a Virtual Machine Monitor (VMM) that runs on top of KVM
