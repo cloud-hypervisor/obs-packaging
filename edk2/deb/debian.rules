@@ -48,7 +48,7 @@ ifeq ($(DEB_BUILD_ARCH_CPU), amd64)
 else ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
     EDK2_ARCH := AARCH64
     EDK2_DSC := ArmVirtPkg/ArmVirtCloudHv.dsc
-    EDK2_FD_PATH := Build/ArmVirtCloudHv-AARCfH64/RELEASE_GCC5/FV/CLOUDHV_EFI.fd
+    EDK2_FD_PATH := Build/ArmVirtCloudHv-AARCH64/RELEASE_GCC5/FV/CLOUDHV_EFI.fd
     EDK2_PACKAGES_PATH := $$PWD:$$PWD/edk2-platforms
 else
     $(error unrecognized build host instruction set $(DEB_HOST_ARCH_CPU)!)
