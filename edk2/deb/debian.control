@@ -5,7 +5,7 @@ Build-Depends: debhelper, debhelper-compat (= 10), gcc, g++, binutils, python3, 
 
 
 Package: edk2-cloud-hypervisor
-Architecture: amd64 arm64
+Architecture: all
 Description: A UEFI firmware to boot UEFI enabled guest image under Cloud Hypervisor
  In order to boot UEFI enabled guest image this firmware is
  needed for Cloud-Hypervisor.

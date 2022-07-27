@@ -3,7 +3,7 @@ Source: edk2-cloud-hypervisor
 Version: 20220715
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
-Architecture: amd64 arm64
+Architecture: all
 Build-Depends: debhelper, debhelper-compat (= 10), gcc, g++, binutils, python3, acpica-tools, make, nasm, sed, libuuid1
 DEBTRANSFORM-TAR: edk2-482f50252d-ch.tar.gz
 Checksums-Sha1:
