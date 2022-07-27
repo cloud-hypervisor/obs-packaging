@@ -32,10 +32,10 @@ override_dh_auto_build-arch:
 
 override_dh_auto_install:
 	
-	install -d debian/cloud-hypervisor/usr
-	install -d debian/cloud-hypervisor/usr/share
-	install -d debian/cloud-hypervisor/usr/share/cloud-hypervisor
-	install -D -m 644 $(EDK2_FD_PATH) debian/cloud-hypervisor/usr/share/cloud-hypervisor/CLOUDHV_EFI.fd
+	install -d debian/edk2-cloud-hypervisor/usr
+	install -d debian/edk2-cloud-hypervisor/usr/share
+	install -d debian/edk2-cloud-hypervisor/usr/share/cloud-hypervisor
+	install -D -m 644 $(EDK2_FD_PATH) debian/edk2-cloud-hypervisor/usr/share/cloud-hypervisor/CLOUDHV_EFI.fd
 
 override_dh_auto_clean:
 	rm -rf edk2-platforms
