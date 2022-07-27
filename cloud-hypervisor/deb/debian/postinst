@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+/sbin/setcap cap_net_admin+ep /usr/bin/cloud-hypervisor
+
