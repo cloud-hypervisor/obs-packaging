@@ -20,7 +20,7 @@ override_dh_auto_build-arch:
 		edk2-submodule-RedfishPkg-Library-JsonLib-jansson.tar.gz \
 		edk2-submodule-SoftFloat.tar.gz \
 		edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz; do \
-		tar xf $$i; \
+		tar xf /usr/src/packages/SOURCES/$$i; \
 	done
 	export PACKAGES_PATH=$(EDK2_PACKAGES_PATH)
 	source ./edksetup.sh
