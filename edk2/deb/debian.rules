@@ -44,7 +44,7 @@ ifeq ($(DEB_BUILD_ARCH_CPU), amd64)
     EDK2_ARCH := X64
     EDK2_DSC := OvmfPkg/CloudHv/CloudHvX64.dsc
     EDK2_FD_PATH := Build/CloudHvX64/RELEASE_GCC5/FV/CLOUDHV.fd
-    EDK2_PACKAGES_PATH := $PWD
+    EDK2_PACKAGES_PATH := $$PWD
 else ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
     EDK2_ARCH := AARCH64
     EDK2_DSC := ArmVirtPkg/ArmVirtCloudHv.dsc
