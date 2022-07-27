@@ -11,6 +11,9 @@ SHELL=/bin/bash
 %:
 	dh $@
 
+override_dh_strip:
+	# pass
+
 override_dh_auto_build-arch:
 	# /usr/src/packages/SOURCES is OBS specific path
 	mkdir edk2-platforms; \
