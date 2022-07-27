@@ -4,7 +4,7 @@ Version: 20220715
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Architecture: amd64 arm64
-Build-Depends: debhelper, debhelper-compat (= 10), gcc, g++, binutils, python3, acpica-tools, make, nasm, sed, libuuid1
+Build-Depends: debhelper, debhelper-compat (= 10), gcc, g++, binutils, python3, python3-distutils, python3-pexpect, iasl, make, nasm, sed, uuid-dev
 DEBTRANSFORM-TAR: edk2-482f50252d-ch.tar.gz
 Checksums-Sha1:
  2ed8fa27571fb06e1452ff6b5c7fd07ccdd49868 14574550 edk2-482f50252d-ch.tar.gz
