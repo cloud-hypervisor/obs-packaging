@@ -39,7 +39,6 @@ override_dh_auto_install:
 	install -D -m 644 $(EDK2_FD_PATH) debian/cloud-hypervisor/usr/share/cloud-hypervisor/CLOUDHV_EFI.fd
 
 override_dh_auto_clean:
-	make clean
 ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
 	rm -rf edk2-platforms
 endif
