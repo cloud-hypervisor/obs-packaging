@@ -26,13 +26,8 @@ override_dh_auto_build-arch:
 	done; \
 	export PACKAGES_PATH=$(EDK2_PACKAGES_PATH); \
 	. ./edksetup.sh; \
-ifeq ($(DEB_BUILD_ARCH_CPU), amd64)
-	make -C BaseTools; \
-else ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
 	make -C BaseTools EXTRA_OPTFLAGS="-Wno-vla-parameter"; \
-	# Don't fail on brotli
 	sed -ie 's,-Werror,,g' Conf/tools_def.txt; \
-endif
 	build -a $(EDK2_ARCH) -t GCC5 -p $(EDK2_DSC) -b RELEASE
 
 override_dh_auto_install:
