@@ -1,0 +1,60 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+include /usr/share/dpkg/default.mk
+
+%:
+	dh $@
+
+override_dh_auto_build-arch:
+	# /usr/src/packages/SOURCES is OBS specific path
+	mkdir edk2-platforms
+	tar xf /usr/src/packages/SOURCES/edk2-platforms-03d1c51.tar.gz -C edk2-platforms --strip-components=1
+	for i in edk2-submodule-BaseTools-Source-C-BrotliCompress-brotli.tar.gz \
+		edk2-submodule-CryptoPkg-Library-OpensslLib-openssl.tar.gz \
+		edk2-submodule-MdeModulePkg-Library-BrotliCustomDecompressLib-brotli.tar.gz \
+		edk2-submodule-MdeModulePkg-Universal-RegularExpressionDxe-oniguruma.tar.gz \
+		edk2-submodule-RedfishPkg-Library-JsonLib-jansson.tar.gz \
+		edk2-submodule-SoftFloat.tar.gz \
+		edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz; do
+		tar xf $i
+	done
+	export PACKAGES_PATH=$(EDK2_PACKAGES_PATH)
+	source ./edksetup.sh
+ifeq ($(DEB_BUILD_ARCH_CPU), amd64)
+	make -C BaseTools
+else ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
+	make -C BaseTools EXTRA_OPTFLAGS="-Wno-vla-parameter"
+	# Don't fail on brotli
+	sed -ie 's,-Werror,,g' Conf/tools_def.txt
+endif
+	build -a $(EDK2_ARCH) -t GCC5 -p $(EDK2_DSC) -b RELEASE
+
+override_dh_auto_install:
+	
+	install -d debian/cloud-hypervisor/usr
+	install -d debian/cloud-hypervisor/usr/share
+	install -d debian/cloud-hypervisor/usr/share/cloud-hypervisor
+	install -D -m 644 $(EDK2_FD_PATH) debian/cloud-hypervisor/usr/share/cloud-hypervisor/CLOUDHV_EFI.fd
+
+override_dh_auto_clean:
+	make clean
+ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
+	rm -rf edk2-platforms
+endif
+
+ifeq ($(DEB_BUILD_ARCH_CPU), amd64)
+	EDK2_ARCH := X64
+	EDK2_DSC := OvmfPkg/CloudHv/CloudHvX64.dsc
+	EDK2_FD_PATH := Build/CloudHvX64/RELEASE_GCC5/FV/CLOUDHV.fd
+	EDK2_PACKAGES_PATH := $PWD
+else ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
+	EDK2_ARCH := AARCH64
+	EDK2_DSC := ArmVirtPkg/ArmVirtCloudHv.dsc
+	EDK2_FD_PATH := Build/ArmVirtCloudHv-AARCfH64/RELEASE_GCC5/FV/CLOUDHV_EFI.fd
+	EDK2_PACKAGES_PATH := $PWD:$PWD/edk2-platforms
+else
+    $(error unrecognized build host instruction set $(DEB_HOST_ARCH_CPU)!)
+endif
+

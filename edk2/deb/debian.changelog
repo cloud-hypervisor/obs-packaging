@@ -1,0 +1,6 @@
+edk2-cloud-hypervisor (20220715-1) stable unstable bionic focal impish jammy kinetic; urgency=low
+
+  * Port RPM  to DEB
+
+-- Anatol Belski <anbelski@linux.microsoft.com>  Wed, 27 Jul 2022 00:46:41 +0200
+

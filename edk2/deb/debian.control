@@ -1,0 +1,11 @@
+Source: edk2-cloud-hypervisor
+Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
+Homepage: https://github.com/cloud-hypervisor/edk2/tree/ch
+Build-Depends: debhelper, debhelper-compat (= 10), gcc, g++, binutils, python3, acpica-tools, make, nasm, sed, libuuid1
+
+
+Package: edk2-cloud-hypervisor
+Architecture: amd64 arm64
+Description: A UEFI firmware to boot UEFI enabled guest image under Cloud Hypervisor
+ In order to boot UEFI enabled guest image this firmware is
+ needed for Cloud-Hypervisor.
