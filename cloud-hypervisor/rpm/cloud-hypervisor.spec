@@ -31,9 +31,10 @@ BuildRequires:  openssl-devel
 
 %if 0%{?centos_version}
 BuildRequires:  rust-toolset >= 1.60.0
-%endif
+%else
 BuildRequires:  rust >= 1.60.0
 BuildRequires:  cargo >= 1.60.0
+%endif
 
 Requires: bash
 Requires: glibc
