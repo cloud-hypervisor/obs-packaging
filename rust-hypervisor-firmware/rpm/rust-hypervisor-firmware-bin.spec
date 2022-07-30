@@ -1,4 +1,4 @@
-Name:           rust-hypervisor-firmware
+Name:           rust-hypervisor-firmware-bin
 Version:        0.4.0
 Release:        1%{?dist}
 Summary:        A simple firmware that is designed to be launched from anything that supports loading ELF binaries and running them with the PVH booting standard
