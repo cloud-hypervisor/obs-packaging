@@ -27,5 +27,5 @@ install -D -m 644 %{SOURCE0} $D/hypervisor-fw
 %dir %{_datadir}/cloud-hypervisor
 
 %changelog
-* Fri Jul 30 2022 Anatol Belski <anbelski@linux.microsoft.com> - 0.4.0-1
+* Sat Jul 30 2022 Anatol Belski <anbelski@linux.microsoft.com> - 0.4.0-1
 - Initial SPEC 
