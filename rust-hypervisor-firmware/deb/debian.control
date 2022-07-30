@@ -1,0 +1,11 @@
+Source: rust-hypervisor-firmware-bin
+Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
+Homepage: https://github.com/cloud-hypervisor/rust-hypervisor-firmware
+Build-Depends: debhelper, debhelper-compat (= 11)
+
+
+Package: rust-hypervisor-firmware-bin
+Architecture: amd64
+Description: A simple firmware that is designed to be launched from anything that supports loading ELF binaries and running them with the PVH booting standard.
+ The purpose is to be able to use this firmware to be able to load a bootloader from within a disk image without requiring the use of a complex firmware such as TianoCore/edk2 and without requiring the VMM to reuse functionality used for booting the Linux kernel.
+

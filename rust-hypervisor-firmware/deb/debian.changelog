@@ -1,0 +1,6 @@
+rust-hypervisor-firmware-bin (0.4.0-1) stable unstable bionic focal impish jammy kinetic; urgency=low
+
+  * Initial DEB
+
+-- Anatol Belski <anbelski@linux.microsoft.com>  Sat, 30 Jul 2022 02:53:54 +0200
+

@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+include /usr/share/dpkg/pkg-info.mk
+include /usr/share/dpkg/architecture.mk
+include /usr/share/dpkg/buildflags.mk
+
+SHELL=/bin/bash
+
+%:
+	dh $@
+
+override_dh_strip:
+	# pass
+
+override_dh_auto_install:
+	install -d debian/rust-hypervisor-firmware-bin/usr
+	install -d debian/rust-hypervisor-firmware-bin/usr/share
+	install -d debian/rust-hypervisor-firmware-bin/usr/share/cloud-hypervisor
+	install -D -m 644 hypervisor-fw debian/rust-hypervisor-firmware-bin/usr/share/cloud-hypervisor/hypervisor-fw
+
