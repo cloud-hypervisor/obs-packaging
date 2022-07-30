@@ -18,5 +18,5 @@ override_dh_auto_install:
 	install -d debian/rust-hypervisor-firmware-bin/usr
 	install -d debian/rust-hypervisor-firmware-bin/usr/share
 	install -d debian/rust-hypervisor-firmware-bin/usr/share/cloud-hypervisor
-	install -D -m 644 /usr/src/packages/SOURCES/hypervisor-fw debian/rust-hypervisor-firmware-bin/usr/share/cloud-hypervisor/hypervisor-fw
+	install -D -m 644 hypervisor-fw debian/rust-hypervisor-firmware-bin/usr/share/cloud-hypervisor/hypervisor-fw
 
