@@ -5,7 +5,6 @@ DEBTRANSFORM-RELEASE: 1
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Architecture: amd64
 Build-Depends: debhelper, debhelper-compat (= 11)
-DEBTRANSFORM-TAR: hypervisor-fw
 Checksums-Sha1:
  48ca3993c9e66c0465f88c491ddc360ea3cee74a 82208 hypervisor-fw
 Checksums-Sha256:
