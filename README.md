@@ -6,6 +6,7 @@ This repository contains specifications to package [Cloud Hypervisor](https://gi
 
 | Package | Architecture |
 |         | AMD64 | AARCH64 |
+| ------- | ----- | ------- |
 | cloud-hypervisor | yes | yes |
 | edk2-cloud-hypervisor | yes | yes |
 | rust-hyperisor-firmware | yes | no |
