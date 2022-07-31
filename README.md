@@ -4,8 +4,7 @@ This repository contains specifications to package [Cloud Hypervisor](https://gi
 
 # Available Packages
 
-| Package | Architecture |
-|         | AMD64 | AARCH64 |
+| Package | AMD64 | AARCH64 |
 | ------- | ----- | ------- |
 | cloud-hypervisor | yes | yes |
 | edk2-cloud-hypervisor | yes | yes |
