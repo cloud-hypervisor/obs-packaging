@@ -1,4 +1,4 @@
-# cloud-hypervisor-obs
+# Cloud Hypervisor OBS Packaging
 
 This repository contains specifications to package [Cloud Hypervisor](https://github.com/cloud-hypervisor/cloud-hypervisor) and accompanying software for various formats and Linux distributions. The packages built on [Open Build Service](https://build.opensuse.org/) are available through the [package repositories](https://download.opensuse.org/repositories/home:/cloud-hypervisor/).
 
