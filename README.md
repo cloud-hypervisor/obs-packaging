@@ -15,7 +15,7 @@ In order to use the pre-built Cloud Hypervisor binaries, the repository for the 
 
 Installing with `zypper`:
 ```bash
-$ zypper ar https://download.opensuse.org/repositories/home:/cloud-hypervisor/openSUSE_Tumbleweed/home:weltling:cloud-hypervisor.repo
+$ zypper ar https://download.opensuse.org/repositories/home:/cloud-hypervisor/openSUSE_Tumbleweed/home:cloud-hypervisor.repo
 $ zypper ref
 $ zypper in cloud-hypervisor edk2-cloud-hypervisor
 ```
@@ -23,8 +23,8 @@ $ zypper in cloud-hypervisor edk2-cloud-hypervisor
 Installing with `yum`:
 ```bash
 $ yum install yum-utils
-$ yum-config-manager --add-repo https://download.opensuse.org/repositories/home:/cloud-hypervisor/Fedora_36/home:weltling:cloud-hypervisor.repo
-$ yum-config-manager --enable home_weltling_cloud-hypervisor
+$ yum-config-manager --add-repo https://download.opensuse.org/repositories/home:/cloud-hypervisor/Fedora_36/home:cloud-hypervisor.repo
+$ yum-config-manager --enable home_cloud-hypervisor
 $ yum install cloud-hypervisor edk2-cloud-hypervisor
 ```
 
