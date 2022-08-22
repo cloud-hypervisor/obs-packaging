@@ -5,7 +5,7 @@ DEBTRANSFORM-RELEASE: 3
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Architecture: amd64 arm64
 Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libssl-dev, libcap2-bin
-DEBTRANSFORM-TAR: v25.0.tar.gz
+DEBTRANSFORM-TAR: v26.0.tar.gz
 Checksums-Sha1:
  0593cab0ee4614d5cbe1745f2d4446ac19f28159 814466 v26.0.tar.gz
  c579ff89a4e6291c595cc31243d1cff8871d1f07 1185 config.toml
