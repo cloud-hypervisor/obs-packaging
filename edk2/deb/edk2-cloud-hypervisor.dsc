@@ -1,13 +1,13 @@
 Format: 3.0 (quilt)
 Source: edk2-cloud-hypervisor
-Version: 20220715
+Version: 20220924
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Architecture: amd64 arm64
 Build-Depends: debhelper, debhelper-compat (= 11), gcc, g++, binutils, python3, python3-distutils, python3-pexpect, iasl, make, nasm, sed, uuid-dev
-DEBTRANSFORM-TAR: edk2-482f50252d-ch.tar.gz
+DEBTRANSFORM-TAR: edk2-c1166d5-ch.tar.gz
 Checksums-Sha1:
- 2ed8fa27571fb06e1452ff6b5c7fd07ccdd49868 14574550 edk2-482f50252d-ch.tar.gz
+ 1fd0b6b4eb7cae8ac917a55697a874ae76aacae0 14756526 edk2-c1166d5-ch.tar.gz
  c8396154e207fbc100da2abde590a59a9f871e9b 10614425 edk2-platforms-03d1c51.tar.gz
  d70c843a2e6ac8b099361cfaa153b2d883bf8db1 512013 edk2-submodule-BaseTools-Source-C-BrotliCompress-brotli.tar.gz
  c2ccf2a615cb802741da42c93ec5136480743880 10029444 edk2-submodule-CryptoPkg-Library-OpensslLib-openssl.tar.gz
@@ -17,7 +17,7 @@ Checksums-Sha1:
  3b6fbba1bfd7b947270c261e7bf554370eb9d2c8 148602 edk2-submodule-SoftFloat.tar.gz
  a85069ac1ace6436c93fee5389e7e6d7191f7853 100318 edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz
 Checksums-Sha256:
- e8450582d8875bc4430e1b11e2ae7118f12db35b9dceb8a4327b16ab3c0a45e1 14574550 edk2-482f50252d-ch.tar.gz
+ 1e57f4667a2abbefe5d9de9ae7c64c5d3a9061791bd456f6963fede94490d9c6 14756526 edk2-c1166d5-ch.tar.gz
  4f6b525262207cae4c564457645ce21edf698268b0a4d8d1b55bec1bad288b4c 10614425 edk2-platforms-03d1c51.tar.gz
  7ee07f85b0be67b175194ca9cc261d784834ea9fedc199210d513b1cd438475c 512013 edk2-submodule-BaseTools-Source-C-BrotliCompress-brotli.tar.gz
  8625980e3ead397c5beb293dbd664d4e6f41721f4a9eff95f1247695aade077d 10029444 edk2-submodule-CryptoPkg-Library-OpensslLib-openssl.tar.gz
@@ -28,7 +28,7 @@ Checksums-Sha256:
  2884047be5dc82882faaa470910bd0f1857281b2292682cfa6d4f82b351961c9 100318 edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz
 # md5 size tarballname
 Files:
- 9b0aab7243362f4c1f51acbfccdcf013 14574550 edk2-482f50252d-ch.tar.gz
+ b920acb3c584a308933f454e76c8a751 14756526 edk2-c1166d5-ch.tar.gz
  b677de73c42e418440281c52e6e1e5ed 10614425 edk2-platforms-03d1c51.tar.gz
  84299e17e08176d86373ce85a9fc839a 512013 edk2-submodule-BaseTools-Source-C-BrotliCompress-brotli.tar.gz
  28b8d99ce10d849dea1dee391116477d 10029444 edk2-submodule-CryptoPkg-Library-OpensslLib-openssl.tar.gz
