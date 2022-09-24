@@ -1,3 +1,9 @@
+rust-hypervisor-firmware-bin (0.4.1-1) stable unstable bionic focal impish jammy kinetic; urgency=low
+
+  * Upgrade to 0.4.1
+
+-- Anatol Belski <anbelski@linux.microsoft.com>  Sun, 25 Sep 2022 02:53:54 +0200
+
 rust-hypervisor-firmware-bin (0.4.0-1) stable unstable bionic focal impish jammy kinetic; urgency=low
 
   * Initial DEB
