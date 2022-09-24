@@ -1,11 +1,11 @@
 Summary:        A UEFI firmware to boot UEFI enabled guest image under Cloud Hypervisor
 Name:           edk2-cloud-hypervisor
-Version:        20220715
+Version:        20220924
 Release:        1%{?dist}
 License:        BSD-2
 Group:          Development/Tools
 URL:            https://github.com/tianocore/edk2
-Source0:        edk2-482f50252d-ch.tar.gz
+Source0:        edk2-c1166d5-ch.tar.gz
 %ifarch aarch64
 # REV=03d1c51
 # wget https://github.com/tianocore/edk2-platforms/tarball/$REV -O edk2-platforms-$REV.tar.gz
@@ -99,6 +99,9 @@ install -D -m 644 %{edk2_fd_path} $D/CLOUDHV_EFI.fd
 %dir %{_datadir}/cloud-hypervisor
 
 %changelog
+* Sat Sep 24 2022 Anatol Belski <anbelski@linux.microsoft.com> - 20220924-1
+- Upgrade to c1166d5
+
 * Sat Jul 16 2022 Anatol Belski <anbelski@linux.microsoft.com> - 20220715-1
 - Initial import SPEC version, merge x86_64 and AARCH64 target
 
