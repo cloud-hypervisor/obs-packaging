@@ -3,12 +3,12 @@
 
 Name:           cloud-hypervisor
 Summary:        Cloud Hypervisor is a Virtual Machine Monitor (VMM) that runs on top of KVM
-Version:        27.0
+Version:        28.0
 Release:        1%{?dist}
 License:        ASL 2.0 or BSD-3-clause
 Group:          Applications/System
 Source0:        https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source1:        vendor-%{version}.tar.gz
 Source2:        config.toml
 ExclusiveArch:  x86_64 aarch64
 
@@ -126,6 +126,9 @@ cargo build --release --target=%{rust_musl_target} --all %{cargo_offline}
 
 
 %changelog
+*   Thu Nov 17 2022 Anatol Belski <anbelski@linux.microsoft.com> 28.0-1
+-   Update to 28.0
+
 *   Fri Sep 30 2022 Anatol Belski <anbelski@linux.microsoft.com> 27.0-1
 -   Update to 27.0
 
