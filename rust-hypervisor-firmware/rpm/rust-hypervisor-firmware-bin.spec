@@ -1,5 +1,5 @@
 Name:           rust-hypervisor-firmware-bin
-Version:        0.4.1
+Version:        0.4.2
 Release:        1%{?dist}
 Summary:        A simple firmware that is designed to be launched from anything that supports loading ELF binaries and running them with the PVH booting standard
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
@@ -27,8 +27,9 @@ install -D -m 644 %{SOURCE0} $D/hypervisor-fw
 %dir %{_datadir}/cloud-hypervisor
 
 %changelog
+* Thu Nov 17 2022 Anatol Belski <anbelski@linux.microsoft.com> - 0.4.2-1
+- Upgrade to 0.4.2
+
 * Sun Sep 25 2022 Anatol Belski <anbelski@linux.microsoft.com> - 0.4.1-1
 - Initial SPEC 
 
-* Sat Jul 30 2022 Anatol Belski <anbelski@linux.microsoft.com> - 0.4.0-1
-- Initial SPEC 
