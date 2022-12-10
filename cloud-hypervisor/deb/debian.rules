@@ -50,5 +50,15 @@ else
     $(error unrecognized build host instruction set $(DEB_HOST_ARCH_CPU)!)
 endif
 
+ifeq ($(DEB_BUILD_ARCH_CPU), amd64)
+    CARGO_PKG_FEATURE_OPTS := --no-default-features --features "mshv,kvm"
+else ifeq ($(DEB_BUILD_ARCH_CPU), aarch64)
+    CARGO_PKG_FEATURE_OPTS := --all
+else ifeq ($(DEB_BUILD_ARCH_CPU), arm64)
+    CARGO_PKG_FEATURE_OPTS := --all
+else
+    $(error unrecognized build host instruction set $(DEB_HOST_ARCH_CPU)!)
+endif
+
 RUST_DEF_TARGET := $(RUST_ARCH)-unknown-linux-gnu
 
