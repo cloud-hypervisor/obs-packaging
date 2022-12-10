@@ -4,7 +4,7 @@
 Name:           cloud-hypervisor
 Summary:        Cloud Hypervisor is a Virtual Machine Monitor (VMM) that runs on top of KVM
 Version:        28.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        ASL 2.0 or BSD-3-clause
 Group:          Applications/System
 Source0:        https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v%{version}.tar.gz
@@ -48,12 +48,14 @@ Requires: libgcc
  
 %ifarch x86_64
 %define rust_def_target x86_64-unknown-linux-gnu
+%define cargo_pkg_feature_opts --no-default-features --features "mshv,kvm"
 %if 0%{?using_musl_libc}
 %define rust_musl_target x86_64-unknown-linux-musl
 %endif
 %endif
 %ifarch aarch64
 %define rust_def_target aarch64-unknown-linux-gnu
+%define cargo_pkg_feature_opts --all
 %if 0%{?using_musl_libc}
 %define rust_musl_target aarch64-unknown-linux-musl
 %endif
@@ -103,9 +105,13 @@ if [[ $? -ne 0 ]]; then
 fi
 
 export OPENSSL_NO_VENDOR=1
-cargo build --release --target=%{rust_def_target} --all %{cargo_offline}
+cargo build --release --target=%{rust_def_target} %{cargo_pkg_feature_opts} %{cargo_offline}
+cargo build --release --target=%{rust_def_target} --package vhost_user_net %{cargo_offline}
+cargo build --release --target=%{rust_def_target} --package vhost_user_block %{cargo_offline}
 %if 0%{?using_musl_libc}
-cargo build --release --target=%{rust_musl_target} --all %{cargo_offline}
+cargo build --release --target=%{rust_musl_target} %{cargo_pkg_feature_opts} %{cargo_offline}
+cargo build --release --target=%{rust_musl_target} --package vhost_user_net %{cargo_offline}
+cargo build --release --target=%{rust_musl_target} --package vhost_user_block %{cargo_offline}
 %endif
 
 %files
@@ -126,8 +132,8 @@ cargo build --release --target=%{rust_musl_target} --all %{cargo_offline}
 
 
 %changelog
-*   Thu Nov 17 2022 Anatol Belski <anbelski@linux.microsoft.com> 28.0-1
--   Update to 28.0
+*   Sat Dec 10 2022 Anatol Belski <anbelski@linux.microsoft.com> 28.0-2
+-   Switch to building a unified binary on x86_64
 
 *   Fri Sep 30 2022 Anatol Belski <anbelski@linux.microsoft.com> 27.0-1
 -   Update to 27.0
