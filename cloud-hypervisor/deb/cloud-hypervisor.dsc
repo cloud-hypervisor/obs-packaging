@@ -1,21 +1,21 @@
 Format: 3.0 (quilt)
 Source: cloud-hypervisor
-Version: 28.0
+Version: 28.1
 DEBTRANSFORM-RELEASE: 3
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Architecture: amd64 arm64
 Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libssl-dev, libcap2-bin
-DEBTRANSFORM-TAR: v28.0.tar.gz
+DEBTRANSFORM-TAR: v28.1.tar.gz
 Checksums-Sha1:
- aa8cb4b1c6831d7e0876b722482f1a79a4c91e60 849598 v28.0.tar.gz
- 7ca2ccb05e72100fbce4998afd39de0c875c6205 1323 config.toml
- 73b79cc5a148377d265406dc132263e6d8a5e484  40634287 vendor-28.0.tar.gz
+ 4214a6f953dbf610d37978bbc6949efb71877ee0 849550 v28.1.tar.gz
+ 026f1fdf4d669bee3faeb2959f6f99cd43906345 1037 config.toml
+ cb4395f6a6f0b2aa0f420877f63a64dd98fd0145 33285509 vendor-28.1.tar.gz
 Checksums-Sha256:
- c04bd4b511a142bec8fb97181b121d8d0623c16188867e860502e936cb751948 849598 v28.0.tar.gz
- e823c53144d9c88262f033560e988e2431a2f0b4a815ff0be8740f0c0bb9312c 1323 config.toml
- a6df1092e3a27c85f38866affaf9cd4e0030b43debe8561654e7200373f239cf 40634287 vendor-28.0.tar.gz
+ f80736f43c0e0daba27df65569158b5cb8d43db79fb9292e01d3bc0c1cde4d2b 849550 v28.1.tar.gz
+ 0038e45c315505ffd9dbba92c2ea5c054521c0302bc9c4b058fdc8214f9d4f84 1037 config.toml
+ d193d0cd85d3e828d83ce9629f3353f59ecc640fea6ed86a86b2a60c743c2fb2 33285509 vendor-28.1.tar.gz
 # md5 size tarballname
 Files:
- 05c5acbf196c475d35fde6d7bffaec1d 849598 v28.0.tar.gz
- dd3e9a092f70591be2650e0bc6efeb32 1323 config.toml
- 0c9002c5eef98547a1f12fd1daea74c0 40634287 vendor-28.0.tar.gz
+ 27125197b2b0f25ed1ba5234009616fc 849550 v28.1.tar.gz
+ da23640e45cc1e8f55286aaf51e6e5e9 1037 config.toml
+ 9d7cc67dd8dc2f1449c27fbe7546379e 33285509 vendor-28.1.tar.gz

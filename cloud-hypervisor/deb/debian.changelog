@@ -1,3 +1,7 @@
+cloud-hypervisor (28.1-2) stable unstable bionic focal impish jammy kinetic; urgency=low
+
+  * Cloud Hypervisor 28.1
+
 cloud-hypervisor (28.0-2) stable unstable bionic focal impish jammy kinetic; urgency=low
 
   * Switch to building unified binary on AMD64
