@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import shutil
+import contextlib
+import time
+import re
+import hashlib
+
+@contextlib.contextmanager
+def pushd(new_dir):
+    previous_dir = os.getcwd()
+    os.chdir(new_dir)
+    try:
+        yield
+    finally:
+        os.chdir(previous_dir)
+
+script_pwd = os.path.realpath(os.path.dirname(sys.argv[0]))
+
+if len(sys.argv) == 1:
+	print("Replace sources with the given <version>\nUsage: {} <version>".format(sys.argv[0]))
+	sys.exit(1)
+
+CH_SPEC_DIR = os.path.join(script_pwd, "rpm")
+CH_DEB_DIR = os.path.join(script_pwd, "deb")
+CH_TMP_DIR = os.path.join(script_pwd, "ch_tmp")
+CH_SRC_DIR = os.path.join(script_pwd, "src")
+
+CH_REV = sys.argv[1]
+if "latest" == CH_REV:
+    CH_REV = "main"
+
+if os.path.isdir(CH_TMP_DIR):
+    shutil.rmtree(CH_TMP_DIR)
+os.mkdir(CH_TMP_DIR)
+
+with pushd(CH_TMP_DIR):
+    cmd = "git clone https://github.com/cloud-hypervisor/cloud-hypervisor.git"
+    os.system(cmd)
+    with pushd("cloud-hypervisor"):
+        cmd = "git checkout {}".format(CH_REV)
+        os.system(cmd)
+        cmd = "git describe {}".format(CH_REV)
+        _tmp0 = os.popen(cmd).read().strip()
+        CH_VER = _tmp0[1:]
+        _tmp1 = _tmp0.split("_")
+        if len(_tmp1) > 1:
+            CH_REL = _tmp1[1]
+        else:
+            CH_REL = 0
+        if len(_tmp1) > 2:
+            CH_HASH = _tmp[2]
+        else:
+            cmd = "git rev-parse --short=8 {}".format(CH_REV)
+            CH_HASH = "g{}".format(os.popen(cmd).read().strip())
+
+CH_DATE = time.strftime("%Y%m%d")
+CH_VER_FULL = "{}.{}".format(CH_VER, CH_REL)
+CH_SRC_TGZ_BASENAME = "cloud-hypervisor-{}".format(CH_VER_FULL)
+CH_SRC_TGZ = "{}.tar.gz".format(CH_SRC_TGZ_BASENAME)
+CH_VENDOR_TGZ = "cloud-hypervisor-{}-vendor.tar.gz".format(CH_VER_FULL)
+CH_CONFIG_TOML = "config.toml"
+CH_SPEC = "cloud-hypervisor.spec"
+
+shutil.rmtree(CH_SRC_DIR)
+os.mkdir(CH_SRC_DIR)
+
+with pushd(os.path.join(CH_TMP_DIR, "cloud-hypervisor")):
+    cmd = "git archive -o {} --prefix='{}' {}".format(os.path.join(CH_SRC_DIR, CH_SRC_TGZ), os.path.join(CH_SRC_TGZ_BASENAME, ""), CH_REV)
+    os.system(cmd)
+    cmd = "cargo vendor"
+    _tmp = os.popen(cmd).read().strip()
+    with open(os.path.join(CH_SRC_DIR, CH_CONFIG_TOML), "w") as f:
+        f.write(_tmp)
+    f.close()
+    cmd = "tar czvf {} vendor".format(os.path.join(CH_SRC_DIR, CH_VENDOR_TGZ))
+    os.system(cmd)
+
+SPEC_FL = os.path.join(CH_SPEC_DIR, CH_SPEC)
+with open(SPEC_FL, "r") as f:
+    SPEC = f.read()
+f.close()
+SPEC = re.sub(r"%global gitver.*", "%global gitver {}".format(CH_VER), SPEC)
+SPEC = re.sub(r"%global gitnum.*", "%global gitnum {}".format(CH_REL), SPEC)
+SPEC = re.sub(r"%global gitrev.*", "%global gitrev {}".format(CH_HASH), SPEC)
+# TODO update changelod
+with open(SPEC_FL, "w") as f:
+    f.write(SPEC)
+f.close()
+
+DSC_FL = os.path.join(CH_DEB_DIR, "cloud-hypervisor.dsc")
+shutil.copyfile("{}.tpl".format(DSC_FL), DSC_FL)
+with open(DSC_FL, "r") as f:
+    DSC = f.read()
+f.close()
+DSC = re.sub(r"VERSION", CH_VER, DSC)
+DSC = re.sub(r"DEBTRANSFORM_TARNAME", CH_SRC_TGZ, DSC)
+algos = ["sha1", "sha256", "md5"]
+for algo in algos:
+    lines = []
+    for fl in os.listdir(CH_SRC_DIR):
+        size = os.stat(os.path.join(CH_SRC_DIR, fl)).st_size
+        with open(os.path.join(CH_SRC_DIR, fl), "rb") as f:
+            h = hashlib.new(algo)
+            h.update(f.read())
+            digest = h.hexdigest()
+        f.close()
+        lines.append(" {} {} {}".format(digest, size, fl))
+    DSC = re.sub(r"{}_SUMS".format(algo.upper()), "\n".join(lines), DSC)
+with open(DSC_FL, "w") as f:
+    f.write(DSC)
+f.close()
+
