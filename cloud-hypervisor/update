@@ -113,3 +113,11 @@ with open(DSC_FL, "w") as f:
     f.write(DSC)
 f.close()
 
+RULES_FL = os.path.join(CH_DEB_DIR, "debian.rules")
+with open(RULES_FL, "r") as f:
+    RULES = f.read()
+f.close()
+RULES = re.sub(r"usr/src/packages/SOURCES/.*vendor.*\.tar.gz", "usr/src/packages/SOURCES/{}".format(CH_VENDOR_TGZ), RULES)
+with open(RULES_FL, "w") as f:
+    f.write(RULES)
+f.close()
