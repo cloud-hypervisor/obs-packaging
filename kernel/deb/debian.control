@@ -1,0 +1,10 @@
+Source: kernel-cloud-hypervisor-guest
+Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
+Homepage: https://github.com/cloud-hypervisor/linux
+Build-Depends: debhelper, debhelper-compat (= 11), bc, bison, flex, gcc, libelf-dev, binutils
+
+
+Package: kernel-cloud-hypervisor-guest
+Architecture: amd64 arm64
+Description: Cloud Hypervisor Linux Fork.
+
