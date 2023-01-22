@@ -9,6 +9,7 @@ This repository contains specifications to package [Cloud Hypervisor](https://gi
 | cloud-hypervisor | yes | yes |
 | edk2-cloud-hypervisor | yes | yes |
 | rust-hyperisor-firmware | yes | no |
+| kernel-cloud-hypervisor-guest | yes | yes |
 
 # Package Repository Usage
 In order to use the pre-built Cloud Hypervisor binaries, the repository for the corresponding distribution needs to be imported on your system.
