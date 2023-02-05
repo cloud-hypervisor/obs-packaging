@@ -1,6 +1,6 @@
 
-%global gitver 5.18.8
-%global gitrev g7f1768cd
+%global gitver 6.1.6
+%global gitrev g689303de
 
 Name:           kernel-cloud-hypervisor-guest
 Version:        %{gitver}
@@ -81,6 +81,9 @@ install -D -m 644 %{image} $D/%{image_fname}
 %dir %{_datadir}/cloud-hypervisor
 
 %changelog
+* Sun Feb 05 2023 Anatol Belski <anbelski@linux.microsoft.com> - 6.1.6-1.g689303de
+Upgrade to ch-6.1.6
+
 * Sat Jan 21 2023 Anatol Belski <anbelski@linux.microsoft.com> - 5.15.8-1.g7f1768cd
 - Initial import CH kernel sources
 
