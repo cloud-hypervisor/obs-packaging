@@ -13,7 +13,7 @@ SHELL=/bin/bash
 
 override_dh_auto_build-arch:
 	# /usr/src/packages/SOURCES is OBS specific path
-	tar xf /usr/src/packages/SOURCES/ch-5.18.8-g7f1768cd.tar.gz --strip-components=1
+	tar xf /usr/src/packages/SOURCES/ch-6.1.6-g689303de.tar.gz --strip-components=1
 	#make mrproper
 	cp /usr/src/packages/SOURCES/$(KERNEL_CONFIG) .config
 	make LC_ALL= ARCH=$(KERNEL_MAKE_ARCH) oldconfig
