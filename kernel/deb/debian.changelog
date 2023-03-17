@@ -1,3 +1,9 @@
+kernel-cloud-hypervisor-guest (6.2.0-1) stable unstable bionic focal impish jammy kinetic; urgency=low
+
+  * Upgrade to ch-6.2.0
+
+-- Anatol Belski <anbelski@linux.microsoft.com>  Sat, 18 Mar 2023 02:53:54 +0200
+
 kernel-cloud-hypervisor-guest (6.1.6-1) stable unstable bionic focal impish jammy kinetic; urgency=low
 
   * Upgrade to ch-6.1.6
