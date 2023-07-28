@@ -20,10 +20,10 @@ override_dh_auto_build-arch:
 	KCFLAGS="$(KERNEL_KCFLAGS)" make ARCH=$(KERNEL_MAKE_ARCH) $(MAKE_TARGET) -j3
 
 override_dh_auto_install:
-	install -d debian/rust-hypervisor-firmware-bin/usr
-	install -d debian/rust-hypervisor-firmware-bin/usr/share
-	install -d debian/rust-hypervisor-firmware-bin/usr/share/cloud-hypervisor
-	install -D -m 644 $(IMAGE) debian/rust-hypervisor-firmware-bin/usr/share/cloud-hypervisor/$(IMAGE_FNAME)
+	install -d debian/kernel-cloud-hypervisor-guest/usr
+	install -d debian/kernel-cloud-hypervisor-guest/usr/share
+	install -d debian/kernel-cloud-hypervisor-guest/usr/share/cloud-hypervisor
+	install -D -m 644 $(IMAGE) debian/kernel-cloud-hypervisor-guest/usr/share/cloud-hypervisor/$(IMAGE_FNAME)
 
 override_dh_auto_clean:
 	make clean
