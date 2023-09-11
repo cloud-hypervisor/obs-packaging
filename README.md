@@ -31,9 +31,11 @@ $ yum install cloud-hypervisor edk2-cloud-hypervisor
 
 Installing with `apt`:
 ```bash
-$ apt-get install software-properties-common 
-$ sudo add-apt-repository 'deb https://download.opensuse.org/repositories/home:/cloud-hypervisor/xUbuntu_20.04/ ./' 
-$ wget -q https://download.opensuse.org/repositories/home:/cloud-hypervisor/xUbuntu_20.04/Release.key -O- | sudo apt-key add - 
-$ sudo apt-get install cloud-hypervisor edk2-cloud-hypervisor
+$ echo 'deb http://download.opensuse.org/repositories/home:/cloud-hypervisor/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home:cloud-hypervisor.list
+$ curl -fsSL https://download.opensuse.org/repositories/home:cloud-hypervisor/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_cloud-hypervisor.gpg > /dev/null
+$ sudo apt update
+$ sudo apt install cloud-hypervisor
 ``` 
+
+See also instructions for [specific distribution versions](https://software.opensuse.org//download.html?project=home%3Acloud-hypervisor&package=cloud-hypervisor).
 
