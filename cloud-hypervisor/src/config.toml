@@ -41,11 +41,6 @@ git = "https://github.com/rust-vmm/vfio"
 branch = "main"
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/rust-vmm/vhost?branch=main"]
-git = "https://github.com/rust-vmm/vhost"
-branch = "main"
-replace-with = "vendored-sources"
-
 [source."git+https://github.com/rust-vmm/vm-fdt?branch=main"]
 git = "https://github.com/rust-vmm/vm-fdt"
 branch = "main"
