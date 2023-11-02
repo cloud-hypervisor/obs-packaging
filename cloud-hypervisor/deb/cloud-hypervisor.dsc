@@ -1,20 +1,20 @@
 Format: 3.0 (quilt)
 Source: cloud-hypervisor
-Version: 35.0
+Version: 36.0
 DEBTRANSFORM-RELEASE: 3
 Maintainer: Anatol Belski <anbelski@linux.microsoft.com>
 Architecture: amd64 arm64
 Build-Depends: debhelper, debhelper-compat (= 10), rust-bin, gcc, binutils, libssl-dev, libcap2-bin
-DEBTRANSFORM-TAR: cloud-hypervisor-35.0.0.tar.gz
+DEBTRANSFORM-TAR: cloud-hypervisor-36.0.0.tar.gz
 Checksums-Sha1:
- 616547a9fcfba805fcd5f194203978b64611b0ba 1630 config.toml
- fbaf1dc8ae400d0c8149fff733ab8e7172163bb3 886263 cloud-hypervisor-35.0.0.tar.gz
- 5f7abf2e4a43ca0503fa97ccc8928dc08c336709 52642185 cloud-hypervisor-35.0.0-vendor.tar.gz
+ 7928d2d6e73ebceabee498dd676d348fa24fabf8 52759905 cloud-hypervisor-36.0.0-vendor.tar.gz
+ 690802a3694e02da4f1ce1f347383e509083cb2f 897945 cloud-hypervisor-36.0.0.tar.gz
+ 0eb9e76fc42d0c0f61a8eae7281378f0e9ae8d2d 1784 config.toml
 Checksums-Sha256:
- 77d27014b252e693d682164e682dd1841075e784fa2108fae1fbadbbd9389596 1630 config.toml
- cf9e82c4fa4b57b020ba94cf698f16e2a1945a16382143b57f0eb28549cbc963 886263 cloud-hypervisor-35.0.0.tar.gz
- 38f57ff3eac5bb6b555b1aae8586bbb821af201f1e317ac157d349bd3e575416 52642185 cloud-hypervisor-35.0.0-vendor.tar.gz
+ 14a6a18169e986b50beca82036872c13fc0567625896c9813a7a285e893613a4 52759905 cloud-hypervisor-36.0.0-vendor.tar.gz
+ bf6ec5013e39a4ea95b2ae9bc0913657ac3bad486abbfcf31045a3ada66fee95 897945 cloud-hypervisor-36.0.0.tar.gz
+ 001fcfeac8a2dd5721948fba3f4497388c20a51a192c0bff2685abb59453955c 1784 config.toml
 Files:
- db3f2be229e2a0a3d5267db54b768953 1630 config.toml
- eecb06fd6938ca3065c04657264f828e 886263 cloud-hypervisor-35.0.0.tar.gz
- 339e73f06ec07f35f49433091b45bec5 52642185 cloud-hypervisor-35.0.0-vendor.tar.gz
+ 032a1a2564cb2294b32fafc0f6d56d4d 52759905 cloud-hypervisor-36.0.0-vendor.tar.gz
+ ccd53b6180a1eaf1645f3ea9d9293b79 897945 cloud-hypervisor-36.0.0.tar.gz
+ 56d8f858cc9608c1b9aea16746d1f21b 1784 config.toml
