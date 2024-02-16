@@ -1,14 +1,14 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/cloud-hypervisor/kvm-bindings?branch=ch-v0.6.0-tdx"]
+[source."git+https://github.com/cloud-hypervisor/kvm-bindings?branch=ch-v0.7.0"]
 git = "https://github.com/cloud-hypervisor/kvm-bindings"
-branch = "ch-v0.6.0-tdx"
+branch = "ch-v0.7.0"
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/cloud-hypervisor/versionize_derive?branch=ch"]
+[source."git+https://github.com/cloud-hypervisor/versionize_derive?branch=ch-0.1.6"]
 git = "https://github.com/cloud-hypervisor/versionize_derive"
-branch = "ch"
+branch = "ch-0.1.6"
 replace-with = "vendored-sources"
 
 [source."git+https://github.com/firecracker-microvm/micro-http?branch=main"]
@@ -23,11 +23,6 @@ replace-with = "vendored-sources"
 
 [source."git+https://github.com/rust-vmm/acpi_tables?branch=main"]
 git = "https://github.com/rust-vmm/acpi_tables"
-branch = "main"
-replace-with = "vendored-sources"
-
-[source."git+https://github.com/rust-vmm/kvm-ioctls?branch=main"]
-git = "https://github.com/rust-vmm/kvm-ioctls"
 branch = "main"
 replace-with = "vendored-sources"
 
