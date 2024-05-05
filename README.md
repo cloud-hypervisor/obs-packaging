@@ -8,7 +8,7 @@ This repository contains specifications to package [Cloud Hypervisor](https://gi
 | ------- | ----- | ------- |
 | cloud-hypervisor | yes | yes |
 | edk2-cloud-hypervisor | yes | yes |
-| rust-hypervisor-firmware | yes | no |
+| rust-hypervisor-firmware-bin | yes | no |
 | kernel-cloud-hypervisor-guest | yes | yes |
 
 # Package Repository Usage
