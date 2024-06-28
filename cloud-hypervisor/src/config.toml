@@ -6,19 +6,14 @@ git = "https://github.com/firecracker-microvm/micro-http"
 branch = "main"
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/microsoft/igvm?branch=main"]
-git = "https://github.com/microsoft/igvm"
-branch = "main"
-replace-with = "vendored-sources"
-
 [source."git+https://github.com/rust-vmm/acpi_tables?branch=main"]
 git = "https://github.com/rust-vmm/acpi_tables"
 branch = "main"
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/rust-vmm/mshv?branch=main"]
+[source."git+https://github.com/rust-vmm/mshv?tag=v0.2.0"]
 git = "https://github.com/rust-vmm/mshv"
-branch = "main"
+tag = "v0.2.0"
 replace-with = "vendored-sources"
 
 [source."git+https://github.com/rust-vmm/vfio-user?branch=main"]
