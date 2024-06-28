@@ -132,8 +132,9 @@ cargo build --release --target=%{rust_musl_target} --package vhost_user_block %{
 %{_libdir}/cloud-hypervisor/static/vhost_user_block
 %caps(cap_net_admin=ep) %{_libdir}/cloud-hypervisor/static/vhost_user_net
 %endif
-%license LICENSE-APACHE
-%license LICENSE-BSD-3-Clause
+%license LICENSES/Apache-2.0.txt
+%license LICENSES/BSD-3-Clause.txt
+%license LICENSES/CC-BY-4.0.txt
 
 
 %changelog
