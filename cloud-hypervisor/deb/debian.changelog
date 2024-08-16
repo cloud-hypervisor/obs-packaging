@@ -1,3 +1,7 @@
+cloud-hypervisor (41.0-1) stable unstable bionic focal impish jammy kinetic; urgency=low
+
+  * Cloud Hypervisor 41.0
+
 cloud-hypervisor (37.0-1) stable unstable bionic focal impish jammy kinetic; urgency=low
 
   * Cloud Hypervisor 37.0
