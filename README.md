@@ -24,15 +24,15 @@ $ zypper in cloud-hypervisor edk2-cloud-hypervisor
 Installing with `yum`:
 ```bash
 $ yum install yum-utils
-$ yum-config-manager --add-repo https://download.opensuse.org/repositories/home:/cloud-hypervisor/Fedora_36/home:cloud-hypervisor.repo
+$ yum-config-manager --add-repo https://download.opensuse.org/repositories/home:/cloud-hypervisor/Fedora_40/home:cloud-hypervisor.repo
 $ yum-config-manager --enable home_cloud-hypervisor
 $ yum install cloud-hypervisor edk2-cloud-hypervisor
 ```
 
 Installing with `apt`:
 ```bash
-$ echo 'deb http://download.opensuse.org/repositories/home:/cloud-hypervisor/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home:cloud-hypervisor.list
-$ curl -fsSL https://download.opensuse.org/repositories/home:cloud-hypervisor/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_cloud-hypervisor.gpg > /dev/null
+$ echo 'deb http://download.opensuse.org/repositories/home:/cloud-hypervisor/xUbuntu_24.04/ /' | sudo tee /etc/apt/sources.list.d/home:cloud-hypervisor.list
+$ curl -fsSL https://download.opensuse.org/repositories/home:cloud-hypervisor/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_cloud-hypervisor.gpg > /dev/null
 $ sudo apt update
 $ sudo apt install cloud-hypervisor
 ``` 
