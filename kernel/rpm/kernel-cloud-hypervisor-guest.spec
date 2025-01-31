@@ -1,6 +1,6 @@
 
-%global gitver 6.2.0
-%global gitrev g9a1660e8
+%global gitver 6.12.8
+%global gitrev g67d9c8da
 
 Name:           kernel-cloud-hypervisor-guest
 Version:        %{gitver}
@@ -10,12 +10,6 @@ License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://github.com/cloud-hypervisor/linux
 Source0:        ch-%{gitver}-%{gitrev}.tar.gz
-%ifarch x86_64
-Source1:        https://raw.githubusercontent.com/cloud-hypervisor/cloud-hypervisor/main/resources/linux-config-x86_64
-%endif
-%ifarch aarch64
-Source1:        https://raw.githubusercontent.com/cloud-hypervisor/cloud-hypervisor/main/resources/linux-config-aarch64
-%endif
 ExclusiveArch:  x86_64 aarch64
 
 BuildRequires:  tar
@@ -60,10 +54,10 @@ Cloud Hypervisor Linux Fork with support for the direct kernel boot.
 # This comes from a github export, thus ignore the root directory as the name won't match.
 tar xf %{SOURCE0} --strip-components=1
 make mrproper
-cp %{SOURCE1} .config
 make LC_ALL= ARCH=%{arch} oldconfig
 
 %build
+make ch_defconfig
 %ifarch x86_64
 KCFLAGS="%{kcflags}" make ARCH=%{arch} bzImage -j$(nproc)
 %endif
@@ -81,6 +75,9 @@ install -D -m 644 %{image} $D/%{image_fname}
 %dir %{_datadir}/cloud-hypervisor
 
 %changelog
+* Fri Jan 31 2025 Anatol Belski <anbelski@linux.microsoft.com> - 6.12.8-1.g67d9c8da
+Upgrade to ch-6.12.8
+
 * Sat Mar 18 2023 Anatol Belski <anbelski@linux.microsoft.com> - 6.2.0-1.g9a1660e8
 Upgrade to ch-6.2
 

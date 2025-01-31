@@ -1,3 +1,7 @@
+kernel-cloud-hypervisor-guest (6.12.8-1) stable unstable bionic focal impish jammy kinetic; urgency=low
+
+  * Upgrade to ch-6.12.8
+
 kernel-cloud-hypervisor-guest (6.2.0-2) stable unstable bionic focal impish jammy kinetic; urgency=low
 
   * Fix installation path
