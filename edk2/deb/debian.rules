@@ -23,8 +23,13 @@ override_dh_auto_build-arch:
 		edk2-submodule-MdeModulePkg-Library-BrotliCustomDecompressLib-brotli.tar.gz \
 		edk2-submodule-MdeModulePkg-Universal-RegularExpressionDxe-oniguruma.tar.gz \
 		edk2-submodule-RedfishPkg-Library-JsonLib-jansson.tar.gz \
-		edk2-submodule-SoftFloat.tar.gz \
-		edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz; do \
+		edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz \
+		edk2-submodule-CryptoPkg-Library-MbedTlsLib-mbedtls.tar.gz \
+		edk2-submodule-MdePkg-Library-BaseFdtLib-libfdt.tar.gz \
+		edk2-submodule-MdePkg-Library-MipiSysTLib-mipisyst.tar.gz \
+		edk2-submodule-SecurityPkg-DeviceSecurity-SpdmLib-libspdm.tar.gz \
+		edk2-submodule-UnitTestFrameworkPkg-Library-GoogleTestLib-googletest.tar.gz \
+		edk2-submodule-UnitTestFrameworkPkg-Library-SubhookLib-subhook.tar.gz; do \
 		tar xf /usr/src/packages/SOURCES/$$i; \
 	done; \
 	export PACKAGES_PATH=$(EDK2_PACKAGES_PATH); \

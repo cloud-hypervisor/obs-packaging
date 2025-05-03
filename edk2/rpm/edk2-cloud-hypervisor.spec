@@ -1,11 +1,11 @@
 Summary:        A UEFI firmware to boot UEFI enabled guest image under Cloud Hypervisor
 Name:           edk2-cloud-hypervisor
-Version:        20220924
+Version:        20250503
 Release:        1%{?dist}
 License:        BSD-2
 Group:          Development/Tools
 URL:            https://github.com/tianocore/edk2
-Source0:        edk2-c1166d5-ch.tar.gz
+Source0:        edk2-a54f262b09-ch.tar.gz
 %ifarch aarch64
 # REV=03d1c51
 # wget https://github.com/tianocore/edk2-platforms/tarball/$REV -O edk2-platforms-$REV.tar.gz
@@ -16,8 +16,13 @@ Source3:        edk2-submodule-CryptoPkg-Library-OpensslLib-openssl.tar.gz
 Source4:        edk2-submodule-MdeModulePkg-Library-BrotliCustomDecompressLib-brotli.tar.gz
 Source5:        edk2-submodule-MdeModulePkg-Universal-RegularExpressionDxe-oniguruma.tar.gz
 Source6:        edk2-submodule-RedfishPkg-Library-JsonLib-jansson.tar.gz
-Source7:        edk2-submodule-SoftFloat.tar.gz
-Source8:        edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz
+Source7:        edk2-submodule-UnitTestFrameworkPkg-Library-CmockaLib-cmocka.tar.gz
+Source8:        edk2-submodule-CryptoPkg-Library-MbedTlsLib-mbedtls.tar.gz
+Source9:        edk2-submodule-MdePkg-Library-BaseFdtLib-libfdt.tar.gz
+Source10:       edk2-submodule-MdePkg-Library-MipiSysTLib-mipisyst.tar.gz
+Source11:       edk2-submodule-SecurityPkg-DeviceSecurity-SpdmLib-libspdm.tar.gz
+Source12:       edk2-submodule-UnitTestFrameworkPkg-Library-GoogleTestLib-googletest.tar.gz
+Source13:       edk2-submodule-UnitTestFrameworkPkg-Library-SubhookLib-subhook.tar.gz
 ExclusiveArch:  aarch64 x86_64
 #!BuildIgnore:  gcc-PIE
 
@@ -60,7 +65,7 @@ rm -rf edk2-platforms
 mkdir edk2-platforms
 tar xf %{SOURCE1} -C edk2-platforms --strip-components=1
 %endif
-for i in %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8}; do
+for i in %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13}; do
 	tar xf $i -C edk2
 done
 
@@ -99,6 +104,9 @@ install -D -m 644 %{edk2_fd_path} $D/CLOUDHV_EFI.fd
 %dir %{_datadir}/cloud-hypervisor
 
 %changelog
+* Sat May 03 2025 Anatol Belski <anbelski@linux.microsoft.com> - 20220924-1
+- Upgrade to a54f262b
+
 * Sat Sep 24 2022 Anatol Belski <anbelski@linux.microsoft.com> - 20220924-1
 - Upgrade to c1166d5
 
