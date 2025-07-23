@@ -16,21 +16,6 @@ git = "https://github.com/rust-vmm/acpi_tables"
 branch = "main"
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/rust-vmm/vfio-user?branch=main"]
-git = "https://github.com/rust-vmm/vfio-user"
-branch = "main"
-replace-with = "vendored-sources"
-
-[source."git+https://github.com/rust-vmm/vfio?branch=main"]
-git = "https://github.com/rust-vmm/vfio"
-branch = "main"
-replace-with = "vendored-sources"
-
-[source."git+https://github.com/rust-vmm/vhost?rev=d983ae0"]
-git = "https://github.com/rust-vmm/vhost"
-rev = "d983ae0"
-replace-with = "vendored-sources"
-
 [source."git+https://github.com/rust-vmm/vm-fdt?branch=main"]
 git = "https://github.com/rust-vmm/vm-fdt"
 branch = "main"
