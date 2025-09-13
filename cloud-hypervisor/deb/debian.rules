@@ -11,7 +11,7 @@ include /usr/share/dpkg/buildflags.mk
 
 override_dh_auto_build-arch:
 	# /usr/src/packages/SOURCES is OBS specific path
-	tar xf /usr/src/packages/SOURCES/cloud-hypervisor-47.0.0-vendor.tar.gz
+	tar xf /usr/src/packages/SOURCES/cloud-hypervisor-48.0.0-vendor.tar.gz
 	mkdir -p .cargo
 	cp /usr/src/packages/SOURCES/config.toml .cargo/
 	cargo build --release --target=$(RUST_DEF_TARGET) --all --offline

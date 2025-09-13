@@ -16,6 +16,11 @@ git = "https://github.com/rust-vmm/acpi_tables"
 branch = "main"
 replace-with = "vendored-sources"
 
+[source."git+https://github.com/rust-vmm/linux-loader?branch=main"]
+git = "https://github.com/rust-vmm/linux-loader"
+branch = "main"
+replace-with = "vendored-sources"
+
 [source."git+https://github.com/rust-vmm/vm-fdt?branch=main"]
 git = "https://github.com/rust-vmm/vm-fdt"
 branch = "main"
