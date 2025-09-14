@@ -35,10 +35,12 @@ BuildRequires:  git
 BuildRequires:  openssl-devel
 
 %if 0%{?centos_version}
-BuildRequires:  rust-toolset >= 1.60.0
+BuildRequires:  rust-toolset >= 1.88.0
+%elif "%{_vendor}" == "openEuler"
+BuildRequires:  rust-bin >= 1.88.0
 %else
-BuildRequires:  rust >= 1.60.0
-BuildRequires:  cargo >= 1.60.0
+BuildRequires:  rust >= 1.88.0
+BuildRequires:  cargo >= 1.88.0
 %endif
 
 Requires: bash
