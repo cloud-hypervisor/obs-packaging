@@ -90,7 +90,7 @@ install -d %{buildroot}%{_libdir}/cloud-hypervisor
 install -D -m755 target/%{rust_def_target}/release/vhost_user_block %{buildroot}%{_libdir}/cloud-hypervisor
 install -D -m755 target/%{rust_def_target}/release/vhost_user_net %{buildroot}%{_libdir}/cloud-hypervisor
 
-%if 0%{?suse_version}
+%if 0%{?suse_version} >= 1599
 # Keep the required capability when SUSE applies its paranoid permissions profile.
 install -d %{buildroot}%{_sysconfdir}/permissions.d
 printf '%%s\n' '%{_bindir}/cloud-hypervisor root:root 0755' \
@@ -133,7 +133,7 @@ cargo build --release --target=%{rust_musl_target} --package vhost_user_block %{
 %defattr(-,root,root,-)
 %{_bindir}/ch-remote
 %caps(cap_net_admin=ep) %{_bindir}/cloud-hypervisor
-%if 0%{?suse_version}
+%if 0%{?suse_version} >= 1599
 %config(noreplace) %{_sysconfdir}/permissions.d/%{name}
 %endif
 %dir %{_libdir}/cloud-hypervisor
@@ -153,6 +153,7 @@ cargo build --release --target=%{rust_musl_target} --package vhost_user_block %{
 %changelog
 *   Sun Oct 18 2026 Anatol Belski <anbelski@linux.microsoft.com> 54.0-1
 -   Preserve required network capability across SUSE permissions profiles
+-   Omit the permissions override on Leap 15.x, whose profiles do not remove it
 
 *   Fri Feb 20 2026 Anatol Belski <anbelski@linux.microsoft.com> 51.0-1
 -   Update to 51.0
